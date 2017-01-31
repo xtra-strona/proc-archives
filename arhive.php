@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 if ($input->urlSegment(1)) {
       if(is_numeric($input->urlSegment(1)) && is_numeric($input->urlSegment(2))){
   } else {
@@ -8,8 +8,9 @@ if ($input->urlSegment(1)) {
 include('./_head.php'); // include header markup
 
 // CREATE DATE TIME FIELD => date_time with this date and slash /important/ => 2016/06/03
-// In your template like archive.php, you must select Allow URL Segments
+// In your template like archive.php, you must select Allow URL Segments?
 
+//Get the name of the blog. Where in the site menu Blog ...  Settings => Name => /blog/
 $blog = $pages->get("/blog/");
 $startYear = date("Y"); // this year
 $endYear = 2014; // or whenever you want it to end
@@ -38,10 +39,6 @@ for($year = $startYear; $year >= $endYear; $year--) {
 //GET URL SEGMENT
      $y = $input->urlSegment(1);
      $m = $input->urlSegment(2);
-
-// echo $date_s = "$y-$m-01";
-// echo '<br>';
-// echo $date_e = "$y-$m-31";
 
 $date_s = "$y/$m/01";
 $date_e = "$y/$m/31";
